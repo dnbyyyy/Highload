@@ -1,4 +1,4 @@
-package com.example.models;
+package ru.itmo.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

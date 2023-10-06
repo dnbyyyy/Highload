@@ -1,7 +1,7 @@
-package com.example.services;
+package ru.itmo.services;
 
-import com.example.models.KeyValue;
-import com.example.repositories.KeyValueRepository;
+import ru.itmo.models.KeyValue;
+import ru.itmo.repositories.KeyValueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

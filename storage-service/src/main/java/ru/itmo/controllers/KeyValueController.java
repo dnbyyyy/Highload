@@ -1,7 +1,7 @@
-package com.example.controllers;
+package ru.itmo.controllers;
 
-import com.example.models.KeyValue;
-import com.example.services.KeyValueService;
+import ru.itmo.models.KeyValue;
+import ru.itmo.services.KeyValueService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
-package com.example.repositories;
+package ru.itmo.repositories;
 
-import com.example.models.KeyValue;
+import ru.itmo.models.KeyValue;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

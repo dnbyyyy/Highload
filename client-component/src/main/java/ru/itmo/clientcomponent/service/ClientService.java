@@ -1,6 +1,6 @@
-package com.example.clientcomponent.service;
+package ru.itmo.clientcomponent.service;
 
-import com.example.clientcomponent.entities.KeyValue;
+import ru.itmo.clientcomponent.entities.KeyValue;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;

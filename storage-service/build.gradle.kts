@@ -24,6 +24,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("io.lettuce:lettuce-core:6.2.6.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-data-redis:3.1.4")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
     compileOnly ("org.projectlombok:lombok:1.18.26")
     annotationProcessor ("org.projectlombok:lombok:1.18.26")
 }

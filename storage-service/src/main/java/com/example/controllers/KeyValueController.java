@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import com.example.models.KeyValue;
 import com.example.services.KeyValueService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/keys")
+@Tag(name = "apartments api")
 public class KeyValueController {
 
     private final KeyValueService keyValueService;
@@ -19,19 +21,19 @@ public class KeyValueController {
         this.keyValueService = keyValueService;
     }
 
-    @GetMapping("/{key}")
-    public ResponseEntity<Optional<KeyValue>> getKey(@PathVariable String key) {
+    @GetMapping("/get")
+    public ResponseEntity<?> getKey(@RequestParam String key) {
         Optional<KeyValue> value = keyValueService.getKeyValue(key);
-        if (value.isEmpty()) {
-            return ResponseEntity.ok(value);
+        if (value.isPresent()) {
+            return ResponseEntity.ok(value.get());
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PutMapping("/{key}")
-    public ResponseEntity<Void> setKey(@PathVariable String key, @RequestBody String value) {
-        keyValueService.setKeyValue(key, value);
+    @PostMapping("/set")
+    public ResponseEntity<?> setKey(@RequestBody KeyValue keyValue) {
+        keyValueService.setKeyValue(keyValue.getKey(), keyValue.getValue());
         return ResponseEntity.ok().build();
     }
 }

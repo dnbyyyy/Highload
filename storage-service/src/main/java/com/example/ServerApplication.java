@@ -17,6 +17,7 @@ public class ServerApplication {
         return template;
     }
 
+
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
     }

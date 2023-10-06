@@ -18,8 +18,8 @@ public class KeyValueServiceImpl implements KeyValueService{
     }
 
     @Override
-    public KeyValue setKeyValue(String key, String value) {
-        return repository.save(new KeyValue(key,value));
+    public void setKeyValue(String key, String value) {
+        repository.save(new KeyValue(key,value));
     }
 
     @Override

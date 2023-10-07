@@ -10,7 +10,7 @@ public class ClientService {
     private final WebClient webClient;
 
     public ClientService(){
-      webClient = WebClient.create("http://localhost:8080");
+      webClient = WebClient.create("http://10.5.0.4:8080");
     }
 
     public Mono<KeyValue> get(String key){

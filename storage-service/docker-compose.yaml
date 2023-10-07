@@ -25,8 +25,7 @@ services:
 
   highload-client:
     image: client
-    command: get 123
-    restart: unless-stopped
+    command: get ab
     container_name: client-container
     networks:
       network:

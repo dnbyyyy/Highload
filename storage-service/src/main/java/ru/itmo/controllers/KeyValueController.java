@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/keys")
-@Tag(name = "apartments api")
+@Tag(name = "storage-service api")
 public class KeyValueController {
 
     private final KeyValueService keyValueService;

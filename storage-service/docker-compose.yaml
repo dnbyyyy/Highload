@@ -4,10 +4,10 @@ services:
   redis:
     image: redis
     environment:
-      REDIS_USERNAME: default
-      REDIS_PASSWORD: redispw
+      REDIS_USERNAME: ${REDIS_USERNAME}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
     ports:
-      - "6379:6379"
+      - ${REDIS_PORT}:${REDIS_PORT}
     networks:
       network:
         ipv4_address: 10.5.0.2
@@ -21,7 +21,7 @@ services:
       network:
         ipv4_address: 10.5.0.4
     ports:
-      - "5050:8080"
+      - ${SERVER_SWAGGER_PORT}:${SERVER_PORT}
 
   highload-client:
     image: client

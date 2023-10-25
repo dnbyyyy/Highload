@@ -6,7 +6,8 @@ public class MemTable<K, V> implements KeyValueStorage<K, V>{
     private final long maxMemTableSize;
 
     public MemTable(long maxMemTableSize) {
-        this.lsmTree = new LSMTree<>("D:\\GitClone\\Highload\\storage-service\\memTableFiles");
+        //should be removed before deploy
+        this.lsmTree = new LSMTree<>(System.getProperty("user.dir"));
         this.maxMemTableSize = maxMemTableSize;
     }
 

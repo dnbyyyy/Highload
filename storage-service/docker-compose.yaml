@@ -14,7 +14,7 @@ services:
 
 
   highload-service:
-    image: server
+    image: storage-container
     container_name: service-container
     restart: unless-stopped
     networks:
@@ -24,7 +24,7 @@ services:
       - ${SERVER_SWAGGER_PORT}:${SERVER_PORT}
 
   highload-client:
-    image: client
+    image: client-container
     command: get ab
     container_name: client-container
     networks:

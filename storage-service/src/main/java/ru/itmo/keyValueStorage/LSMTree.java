@@ -6,9 +6,12 @@ import java.io.*;
 
 public class LSMTree<K, V> {
     private RocksDB db;
-    private Options options;
-    private ReadOptions readOptions;
-    private WriteOptions writeOptions;
+
+    private final Options options;
+
+    private final ReadOptions readOptions;
+
+    private final WriteOptions writeOptions;
 
     public LSMTree(String dbPath) {
         options = new Options().setCreateIfMissing(true);

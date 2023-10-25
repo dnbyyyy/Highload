@@ -1,5 +1,6 @@
 package ru.itmo.controllers;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import ru.itmo.models.KeyValue;
 import ru.itmo.services.KeyValueService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,7 +18,7 @@ public class KeyValueController {
     private final KeyValueService keyValueService;
 
     @Autowired
-    public KeyValueController(KeyValueService keyValueService) {
+    public KeyValueController(@Qualifier("memTableKeyValueServiceImpl") KeyValueService keyValueService) {
         this.keyValueService = keyValueService;
     }
 

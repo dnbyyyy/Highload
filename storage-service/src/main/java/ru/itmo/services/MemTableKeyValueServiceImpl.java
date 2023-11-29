@@ -1,6 +1,7 @@
 package ru.itmo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ru.itmo.models.KeyValue;
 import ru.itmo.repositories.KeyValueMemTableRepository;
@@ -8,6 +9,7 @@ import ru.itmo.repositories.KeyValueMemTableRepository;
 import java.util.Optional;
 
 @Service
+@Profile("lsm")
 public class MemTableKeyValueServiceImpl implements KeyValueService{
 
     private final KeyValueMemTableRepository keyValueMemTableRepository;

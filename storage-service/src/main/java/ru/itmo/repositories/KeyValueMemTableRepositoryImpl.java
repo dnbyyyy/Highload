@@ -1,12 +1,15 @@
 package ru.itmo.repositories;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import ru.itmo.keyValueStorage.MemTable;
 import ru.itmo.models.KeyValue;
 
 import java.util.Optional;
 
+
+@Profile("lsm")
 @Repository
 public class KeyValueMemTableRepositoryImpl implements KeyValueMemTableRepository {
 

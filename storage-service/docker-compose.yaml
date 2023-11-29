@@ -11,7 +11,8 @@ services:
     ports:
       - ${REDIS_PORT}:${REDIS_PORT}
     environment:
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      - STORAGE=${STORAGE}
+      - REDIS_PASSWORD:${REDIS_PASSWORD}
 
   redis-replica0:
     image: redis

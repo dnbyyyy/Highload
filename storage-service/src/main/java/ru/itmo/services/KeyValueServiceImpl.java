@@ -1,5 +1,6 @@
 package ru.itmo.services;
 
+import org.springframework.context.annotation.Profile;
 import ru.itmo.models.KeyValue;
 import ru.itmo.repositories.KeyValueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Profile("redis")
 @Service
 public class KeyValueServiceImpl implements KeyValueService{
 

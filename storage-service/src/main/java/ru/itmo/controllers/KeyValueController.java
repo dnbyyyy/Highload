@@ -18,7 +18,7 @@ public class KeyValueController {
     private final KeyValueService keyValueService;
 
     @Autowired
-    public KeyValueController(@Qualifier("keyValueServiceImpl") KeyValueService keyValueService) {
+    public KeyValueController(KeyValueService keyValueService) {
         this.keyValueService = keyValueService;
     }
 

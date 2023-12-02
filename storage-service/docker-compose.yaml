@@ -11,7 +11,6 @@ services:
     ports:
       - ${REDIS_PORT}:${REDIS_PORT}
     environment:
-      - STORAGE=${STORAGE}
       - REDIS_PASSWORD:${REDIS_PASSWORD}
 
   redis-replica0:
@@ -40,6 +39,8 @@ services:
 
   highload-service:
     image: storage-container
+    environment:
+      SPRING_PROFILES_ACTIVE: ${STORAGE}
     container_name: service-container
     restart: unless-stopped
     networks:
@@ -50,7 +51,7 @@ services:
 
   highload-client:
     image: client-container
-    command: get ab
+    command: get a
     container_name: client-container
     restart: on-failure
     networks:

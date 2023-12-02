@@ -8,8 +8,8 @@ import ru.itmo.repositories.KeyValueMemTableRepository;
 
 import java.util.Optional;
 
-@Service
 @Profile("lsm")
+@Service
 public class MemTableKeyValueServiceImpl implements KeyValueService{
 
     private final KeyValueMemTableRepository keyValueMemTableRepository;

@@ -13,6 +13,7 @@ services:
     environment:
       - REDIS_PASSWORD:${REDIS_PASSWORD}
 
+
   redis-replica0:
     image: redis
     container_name: redis-replica0
@@ -41,6 +42,13 @@ services:
     image: storage-container
     environment:
       SPRING_PROFILES_ACTIVE: ${STORAGE}
+      REDIS_PASSWORD: ${REDIS_MASTER_A_PASSWORD}
+      REDIS_MASTER_A_IP: ${REDIS_MASTER_A_CONNECTION_STRING}
+      REDIS_MASTER_B_IP: ${REDIS_MASTER_B_CONNECTION_STRING}
+      REDIS_MASTER_C_IP: ${REDIS_MASTER_C_CONNECTION_STRING}
+      REDIS_SLAVE_A_IP: ${REDIS_REPLICA_A_CONNECTION_STRING}
+      REDIS_SLAVE_B_IP: ${REDIS_REPLICA_B_CONNECTION_STRING}
+      REDIS_SLAVE_C_IP: ${REDIS_REPLICA_C_CONNECTION_STRING}
     container_name: service-container
     restart: unless-stopped
     networks:
@@ -60,6 +68,7 @@ services:
 
 networks:
   highload-network:
+    name: highload-network
     driver: bridge
     ipam:
       config:

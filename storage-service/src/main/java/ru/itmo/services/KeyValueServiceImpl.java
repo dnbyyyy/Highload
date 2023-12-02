@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Profile("redis")
+@Profile({"redis", "cluster"})
 @Service
 public class KeyValueServiceImpl implements KeyValueService{
 

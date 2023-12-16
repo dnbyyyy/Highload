@@ -2,6 +2,7 @@ package ru.itmo.services;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ru.itmo.models.KeyValue;
@@ -16,7 +17,13 @@ import java.util.Optional;
 public class RedirectToStorageComponentKeyValueServiceImpl implements KeyValueService {
 
     private static final Logger logger = LogManager.getLogger();
-    private final RedirectService redirectService = new RedirectService();
+
+    private final RedirectService redirectService;
+
+    public RedirectToStorageComponentKeyValueServiceImpl(RedirectService redirectService){
+
+        this.redirectService = redirectService;
+    }
 
     @Override
     public void setKeyValue(String key, String value) {

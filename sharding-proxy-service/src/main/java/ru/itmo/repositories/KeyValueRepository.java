@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import ru.itmo.models.KeyValue;
 
-@Profile("redis")
+@Profile("cluster")
 @Repository
 public interface KeyValueRepository extends CrudRepository<KeyValue, String> {
 }

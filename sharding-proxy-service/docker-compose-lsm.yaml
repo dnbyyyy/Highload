@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+
+  highload-lsm-storage:
+    image: storage-container-lsm
+    container_name: service-container
+    restart: unless-stopped
+    networks:
+      highload-network:
+        ipv4_address: 10.5.0.16
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+
+  highload-lsm-1:
+    image: storage-container-lsm
+    container_name: service-container1
+    restart: unless-stopped
+    networks:
+      highload-network:
+        ipv4_address: 10.5.0.17
+    ports:
+      - ${SERVER_PORT_1}:${SERVER_PORT_1}
+
+  highload-client:
+    image: client-container
+    command: get key
+    container_name: client-container
+    restart: on-failure
+    networks:
+      highload-network:
+        ipv4_address: 10.5.0.3
+
+
+  highload-proxy:
+    image: proxy-service
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
+      REDIS_PASSWORD: ${REDIS_MASTER_A_PASSWORD}
+      REDIS_MASTER_A_IP: ${REDIS_MASTER_A_CONNECTION_STRING}
+      REDIS_MASTER_B_IP: ${REDIS_MASTER_B_CONNECTION_STRING}
+      REDIS_MASTER_C_IP: ${REDIS_MASTER_C_CONNECTION_STRING}
+      REDIS_SLAVE_A_IP: ${REDIS_REPLICA_A_CONNECTION_STRING}
+      REDIS_SLAVE_B_IP: ${REDIS_REPLICA_B_CONNECTION_STRING}
+      REDIS_SLAVE_C_IP: ${REDIS_REPLICA_C_CONNECTION_STRING}
+    container_name: proxy-container
+    networks:
+      highload-network:
+        ipv4_address: 10.5.0.7
+
+
+networks:
+  highload-network:
+    name: highload-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1

@@ -1,24 +1,27 @@
 package ru.itmo.services.redirect;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import ru.itmo.models.KeyValue;
 
 import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class RedirectService {
 
     private final ArrayList<WebClient> webClients = new ArrayList<>();
 
-    @Value("#{'${storage.roots}'.split(',')}")
-    private ArrayList<String> rootsList;
+    @Value("#{${storage.roots}}")
+    private List<String> rootsList;
 
 
     public RedirectService() {
-        rootsList.forEach(s -> webClients.add(WebClient.create(s)));
     }
 
     public Mono<KeyValue> get(String key) {
@@ -36,5 +39,10 @@ public class RedirectService {
                 .body(Mono.just(new KeyValue(key, value)), KeyValue.class)
                 .retrieve()
                 .bodyToMono(Void.class);
+    }
+
+    @PostConstruct
+    private void createWebClients(){
+        rootsList.forEach(s -> webClients.add(WebClient.create(s)));
     }
 }
